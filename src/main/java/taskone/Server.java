@@ -72,6 +72,19 @@ class Server {
                         String inStr = (String) message.get("data");
                         returnMessage = performer.add(inStr);
                         break;
+                    case (2):
+                        returnMessage = performer.display();
+                        break;
+                    case (3):
+                        returnMessage = performer.count();
+                        break;
+                    case (0):
+                        returnMessage = new JSONObject();
+                        returnMessage.put("type", "quit");
+                        returnMessage.put("data", "Connection closed");
+                        quit = true;
+                        break;
+
                     default:
                         returnMessage = performer.error("Invalid selection: " + choice
                                 + " is not an option");
